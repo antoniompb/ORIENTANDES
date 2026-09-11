@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 # --- CONFIGURAÇÃO DA PÁGINA ---
-st.set_page_config(page_title="Gestor de Orientação de TCC", page_icon="🎓", layout="wide")
+st.set_page_config(page_title="Gestão de Orientação", page_icon="🎓", layout="wide")
 
 # --- DEFINA SUA SENHA DE ORIENTADOR AQUI ---
 SENHA_ORIENTADOR = "2030"
@@ -17,9 +17,9 @@ if not os.path.exists(UPLOADS_DIR):
 
 # --- ETAPAS DO TCC ---
 ETAPAS = [
-    "1. Tema e Pré-Projeto",
-    "2. Referencial Teórico e Metodologia",
-    "3. Coleta e Análise de Dados",
+    "1. Tema / Ideia",
+    "2. Referencial Teórico e Metodologia / Sumário Executivo",
+    "3. Coleta e Análise de Dados / Pesquisa de Mercado e Plano de MKT",
     "4. Redação Final e Revisão",
     "5. Preparação para Banca",
     "6. Concluído / Entregue"
@@ -32,7 +32,7 @@ def carregar_dados():
     else:
         df = pd.DataFrame({
             "Nome": ["Exemplo Aluno 1"],
-            "Título TCC": ["Análise da Gestão Pública"],
+            "Título do Trabalho": ["Análise da Gestão Pública"],
             "Etapa Atual": [ETAPAS[0]],
             "Data Limite": ["2026-11-30"],
             "Status": ["Em dia"]
@@ -46,7 +46,7 @@ def salvar_dados(df):
 df_alunos = carregar_dados()
 
 # --- INTERFACE PRINCIPAL ---
-st.title("🎓 Sistema de Acompanhamento de TCCs")
+st.title("🎓 Sistema de Acompanhamento de Orientações")
 
 # Invertemos a ordem das abas para que o aluno caia direto na área dele
 aba1, aba2 = st.tabs(["📤 Área do Aluno (Envio de Anexos)", "🔒 Painel do Orientador (Restrito)"])
